@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #0D0D0D;
+  color: #E5E5E5;
+}
+
+@layer components {
+  .card-gradient {
+    background: linear-gradient(135deg, #2A2A2A 0%, #1A1A1A 100%);
+  }
+  
+  .primary-gradient {
+    background: linear-gradient(135deg, #00FF88 0%, #00CC6A 100%);
+  }
+  
+  .secondary-gradient {
+    background: linear-gradient(135deg, #FF4D6D 0%, #E63946 100%);
+  }
+  
+  .accent-gradient {
+    background: linear-gradient(135deg, #1E90FF 0%, #0F6FDB 100%);
+  }
+}

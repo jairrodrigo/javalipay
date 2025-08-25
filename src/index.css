@@ -2,25 +2,102 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Variáveis CSS para temas */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #333232;
+  --text-secondary: #666666;
+  --accent-primary: #ffa500;
+  --accent-secondary: #e6940a;
+  --border-color: #e9ecef;
+  --card-bg: #f8f9fa;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2a2a2a;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --accent-primary: #ffa500;
+  --accent-secondary: #e6940a;
+  --border-color: #404040;
+  --card-bg: #2a2a2a;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
 body {
-  background-color: #0D0D0D;
-  color: #E5E5E5;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @layer components {
   .card-gradient {
-    background: linear-gradient(135deg, #2A2A2A 0%, #1A1A1A 100%);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: all 0.3s ease;
   }
   
   .primary-gradient {
-    background: linear-gradient(135deg, #00FF88 0%, #00CC6A 100%);
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   }
   
   .secondary-gradient {
-    background: linear-gradient(135deg, #FF4D6D 0%, #E63946 100%);
+    background: linear-gradient(135deg, #333232 0%, #4a4949 100%);
   }
   
-  .accent-gradient {
-    background: linear-gradient(135deg, #1E90FF 0%, #0F6FDB 100%);
+  .theme-toggle {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+  }
+  
+  .theme-toggle:hover {
+    background: var(--accent-primary);
+    color: white;
+  }
+  
+  /* Estilos para cards */
+  .theme-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: all 0.3s ease;
+  }
+  
+  .theme-card:hover {
+    box-shadow: 0 4px 16px var(--shadow-color);
+    transform: translateY(-2px);
+  }
+  
+  /* Estilos para botões */
+  .btn-primary {
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background: var(--accent-secondary);
+    transform: translateY(-1px);
+  }
+  
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-secondary:hover {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
   }
 }

@@ -26,18 +26,56 @@ export class AIService {
     };
   }
 
-  static async chatQuery(query: string): Promise<string> {
+  static async chatQuery(query: string, context?: any): Promise<string> {
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    // Mock de respostas inteligentes
-    const responses = [
-      `Baseado no seu histórico, você gastou R$ ${(Math.random() * 500 + 100).toFixed(2)} com essa categoria este mês.`,
-      'Identifiquei um padrão interessante nos seus gastos. Veja os detalhes no relatório.',
-      'Sua receita média mensal é de R$ 4.500,00, com um crescimento de 8% nos últimos 3 meses.',
-      'Recomendo revisar os gastos com alimentação, que aumentaram 15% este mês.',
+    // Se há contexto, gera respostas mais personalizadas
+    if (context) {
+      const { financialContext, preferences, recentConversations } = context;
+      
+      // Analisa o contexto financeiro
+      if (financialContext && financialContext.length > 0) {
+        const totalExpenses = financialContext
+          .filter((item: any) => item.context_type === 'expense')
+          .reduce((sum: number, item: any) => sum + (item.amount || 0), 0);
+        
+        const totalIncome = financialContext
+          .filter((item: any) => item.context_type === 'income')
+          .reduce((sum: number, item: any) => sum + (item.amount || 0), 0);
+        
+        const balance = totalIncome - totalExpenses;
+        
+        // Respostas contextualizadas baseadas nos dados reais
+        const contextualResponses = [
+          `Com base no seu histórico, você tem um saldo atual de R$ ${balance.toFixed(2)}. ${balance >= 0 ? 'Parabéns por manter suas finanças equilibradas!' : 'Recomendo revisar seus gastos para equilibrar o orçamento.'}`,
+          `Analisando seus dados, você gastou R$ ${totalExpenses.toFixed(2)} recentemente. ${query.toLowerCase().includes('economia') ? 'Posso sugerir algumas estratégias de economia baseadas no seu perfil.' : ''}`,
+          `Sua receita registrada é de R$ ${totalIncome.toFixed(2)}. ${query.toLowerCase().includes('meta') ? 'Que tal definirmos uma meta de economia baseada nesse valor?' : ''}`,
+          `Identifiquei ${financialContext.length} transações no seu histórico. ${query.toLowerCase().includes('categoria') ? 'Posso ajudar a categorizar melhor seus gastos.' : ''}`
+        ];
+        
+        return contextualResponses[Math.floor(Math.random() * contextualResponses.length)];
+      }
+      
+      // Se há preferências configuradas
+      if (preferences) {
+        return `Baseado nas suas preferências configuradas, posso oferecer insights mais personalizados. ${query.toLowerCase().includes('ajuda') ? 'Como posso ajudar especificamente?' : 'O que gostaria de saber sobre suas finanças?'}`;
+      }
+      
+      // Se há conversas recentes
+      if (recentConversations && recentConversations.length > 0) {
+        return `Vejo que já conversamos antes. Continuando nossa conversa anterior, ${query.toLowerCase().includes('lembrar') ? 'posso acessar nosso histórico para dar respostas mais precisas.' : 'como posso ajudar hoje?'}`;
+      }
+    }
+    
+    // Respostas padrão quando não há contexto
+    const defaultResponses = [
+      `Sobre "${query}": Baseado em padrões gerais, você pode esperar gastos na faixa de R$ ${(Math.random() * 500 + 100).toFixed(2)} para essa categoria.`,
+      'Para dar respostas mais precisas, preciso conhecer melhor seu perfil financeiro. Que tal começarmos registrando algumas transações?',
+      'Posso ajudar com análises financeiras, planejamento de orçamento e definição de metas. O que você gostaria de explorar primeiro?',
+      'Identifiquei que você está interessado em melhorar suas finanças. Vamos começar organizando suas receitas e despesas?',
     ];
     
-    return responses[Math.floor(Math.random() * responses.length)];
+    return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
   }
 
   private static generateRandomEstablishment(): string {

@@ -8,7 +8,8 @@ import {
   Settings, 
   Receipt,
   TrendingUp,
-  Target
+  Target,
+  Brain
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { JavaliLogo } from '../UI/JavaliLogo';
@@ -26,6 +27,7 @@ const navigation = [
   { name: 'Relatórios', href: '/reports', icon: PieChart },
   { name: 'Insights', href: '/insights', icon: TrendingUp },
   { name: 'Chat IA', href: '/chat', icon: MessageCircle },
+  { name: 'Memória IA', href: '/memory-test', icon: Brain },
   { name: 'Configurações', href: '/settings', icon: Settings },
 ];
 
@@ -47,18 +49,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         initial={{ x: -280 }}
         animate={{ x: isOpen ? 0 : -280 }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="fixed left-0 top-0 h-full w-72 bg-neutral-gray shadow-xl z-30 lg:relative lg:translate-x-0 lg:shadow-none border-r border-neutral-black"
+        className="fixed left-0 top-0 h-full w-72 theme-card shadow-xl z-30 lg:relative lg:translate-x-0 lg:shadow-none border-r"
       >
         <div className="flex flex-col h-full">
           {/* Logo */}
-          <div className="p-6 border-b border-neutral-black">
+          <div className="p-6 border-b border-border-color">
             <div className="flex items-center space-x-3">
               <div className="w-12 h-12 primary-gradient rounded-xl flex items-center justify-center shadow-lg">
                 <JavaliLogo size={28} color="white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-primary-neon">JavaliPay</h1>
-                <p className="text-sm text-neutral-light">Gestão Inteligente</p>
+                <h1 className="text-xl font-bold text-primary-orange">JavaliPay</h1>
+                <p className="text-sm text-text-secondary">Gestão Inteligente</p>
               </div>
             </div>
           </div>
@@ -75,8 +77,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                       onClick={onClose}
                       className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${
                         isActive
-                          ? 'primary-gradient text-neutral-black shadow-lg'
-                          : 'text-neutral-light hover:bg-neutral-black hover:text-primary-neon'
+                          ? 'primary-gradient text-white shadow-lg'
+                          : 'text-text-primary hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-orange'
                       }`}
                     >
                       <item.icon size={20} />
@@ -89,14 +91,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           </nav>
 
           {/* User info */}
-          <div className="p-6 border-t border-neutral-black">
+          <div className="p-6 border-t border-border-color">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 accent-gradient rounded-full flex items-center justify-center">
+              <div className="w-10 h-10 secondary-gradient rounded-full flex items-center justify-center">
                 <span className="text-white font-medium">U</span>
               </div>
               <div>
-                <p className="font-medium text-primary-neon">Usuário</p>
-                <p className="text-sm text-neutral-light">usuario@email.com</p>
+                <p className="font-medium text-primary-orange">Usuário</p>
+                <p className="text-sm text-text-secondary">usuario@email.com</p>
               </div>
             </div>
           </div>

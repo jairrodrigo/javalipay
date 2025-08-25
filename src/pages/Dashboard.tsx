@@ -11,14 +11,14 @@ export const Dashboard: React.FC = () => {
   const transactions = DataService.getTransactions();
 
   return (
-    <div className="p-6 space-y-6 min-h-screen bg-neutral-black">
+    <div className="p-6 space-y-6 min-h-screen bg-background transition-colors duration-300">
       <div className="flex items-center space-x-3">
         <div className="w-8 h-8 primary-gradient rounded-lg flex items-center justify-center">
           <JavaliLogo size={20} color="white" />
         </div>
         <div>
-          <h1 className="text-2xl font-bold text-primary-neon">Dashboard JavaliPay</h1>
-          <p className="text-neutral-light">Visão geral das suas finanças pessoais e empresariais</p>
+          <h1 className="text-2xl font-bold text-primary-orange">Dashboard JavaliPay</h1>
+          <p className="text-text-secondary">Visão geral das suas finanças pessoais e empresariais</p>
         </div>
       </div>
 
@@ -50,7 +50,7 @@ export const Dashboard: React.FC = () => {
           value={transactions.length.toString()}
           change={15.3}
           icon={CreditCard}
-          color="accent-gradient"
+          color="secondary-gradient"
         />
       </div>
 

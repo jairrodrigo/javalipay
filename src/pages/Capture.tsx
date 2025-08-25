@@ -63,33 +63,33 @@ export const Capture: React.FC = () => {
   };
 
   return (
-    <div className="p-6 max-w-4xl mx-auto min-h-screen bg-neutral-black">
+    <div className="p-6 max-w-4xl mx-auto min-h-screen bg-background transition-colors duration-300">
       <div className="mb-6 flex items-center space-x-3">
         <div className="w-8 h-8 primary-gradient rounded-lg flex items-center justify-center">
           <JavaliLogo size={20} color="white" />
         </div>
         <div>
-          <h1 className="text-2xl font-bold text-primary-neon">Captura Inteligente JavaliPay</h1>
-          <p className="text-neutral-light">Fotografe ou envie seus comprovantes para análise automática com IA</p>
+          <h1 className="text-2xl font-bold text-primary-orange">Captura Inteligente JavaliPay</h1>
+          <p className="text-text-secondary">Fotografe ou envie seus comprovantes para análise automática com IA</p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Upload Area */}
         <div className="space-y-4">
-          <div className="card-gradient p-6 rounded-xl shadow-lg border border-neutral-black">
-            <h3 className="text-lg font-semibold mb-4 text-primary-neon">Carregar Documento</h3>
+          <div className="theme-card p-6 rounded-xl shadow-lg border border-border-color transition-colors duration-300">
+            <h3 className="text-lg font-semibold mb-4 text-text-primary">Carregar Documento</h3>
             
             <div className="space-y-4">
               <button
                 onClick={() => fileInputRef.current?.click()}
-                className="w-full p-8 border-2 border-dashed border-neutral-light rounded-lg hover:border-primary-neon transition-colors"
+                className="w-full p-8 border-2 border-dashed border-border-color rounded-lg hover:border-primary-orange transition-colors"
               >
                 <div className="text-center">
-                  <Upload size={48} className="mx-auto text-neutral-light mb-4" />
-                  <p className="text-lg font-medium text-primary-neon">Clique para enviar</p>
-                  <p className="text-neutral-light">ou arraste seus arquivos aqui</p>
-                  <p className="text-sm text-neutral-light opacity-70 mt-2">PNG, JPG, PDF até 10MB</p>
+                  <Upload size={48} className="mx-auto text-text-secondary mb-4" />
+                  <p className="text-lg font-medium text-primary-orange">Clique para enviar</p>
+                  <p className="text-text-secondary">ou arraste seus arquivos aqui</p>
+                  <p className="text-sm text-text-secondary mt-2">PNG, JPG, PDF até 10MB</p>
                 </div>
               </button>
 

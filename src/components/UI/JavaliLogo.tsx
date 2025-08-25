@@ -13,7 +13,7 @@ export const JavaliLogo: React.FC<JavaliLogoProps> = ({
 }) => {
   return (
     <img 
-      src="https://i.imgur.com/WyHwJQs.png"
+      src="/logo_javalipay.png"
       alt="JavaliPay Logo"
       width={size} 
       height={size} 

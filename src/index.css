@@ -48,6 +48,27 @@ body {
   .secondary-gradient {
     background: linear-gradient(135deg, #333232 0%, #4a4949 100%);
   }
+
+  /* Classes utilitárias para cores */
+  .bg-background {
+    background-color: var(--bg-primary);
+  }
+  
+  .text-text-primary {
+    color: var(--text-primary);
+  }
+  
+  .text-text-secondary {
+    color: var(--text-secondary);
+  }
+  
+  .text-primary-orange {
+    color: var(--accent-primary);
+  }
+  
+  .border-border-color {
+    border-color: var(--border-color);
+  }
   
   .theme-toggle {
     background: var(--card-bg);
@@ -73,6 +94,33 @@ body {
   .theme-card:hover {
     box-shadow: 0 4px 16px var(--shadow-color);
     transform: translateY(-2px);
+  }
+  
+  /* Efeito vidro (glassmorphism) */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .dark .glass-card {
+    background: rgba(42, 42, 42, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+  }
+  
+  .dark .glass-card:hover {
+    background: rgba(42, 42, 42, 0.4);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
   }
   
   /* Estilos para botões */

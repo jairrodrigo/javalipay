@@ -50,7 +50,7 @@ export const ExpenseChart: React.FC<ExpenseChartProps> = ({ data }) => {
       const data = payload[0].payload;
       const isGoal = data.type === 'goal';
       return (
-        <div className="theme-card p-3 rounded-lg border border-border-color shadow-lg">
+        <div className="glass-card p-3 rounded-lg">
           <p className="text-text-primary font-medium">{data.name}</p>
           <p className="text-text-secondary text-xs mb-1">
             {isGoal ? '🎯 Objetivo' : '💰 Despesa'}
@@ -87,29 +87,28 @@ export const ExpenseChart: React.FC<ExpenseChartProps> = ({ data }) => {
   };
 
   return (
-    <div className="theme-card p-6 rounded-xl shadow-lg border border-border-color transition-colors duration-300">
+    <div className="glass-card p-6 rounded-xl transition-colors duration-300">
       <h3 className="text-lg font-semibold text-text-primary mb-4">Despesas e Objetivos</h3>
       
-      <div className="h-80">
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
-            <Pie
-              data={chartData}
-              cx="50%"
-              cy="50%"
-              innerRadius={60}
-              outerRadius={120}
-              paddingAngle={5}
-              dataKey="value"
-            >
-              {chartData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color} />
-              ))}
-            </Pie>
-            <Tooltip content={<CustomTooltip />} />
-            <Legend content={<CustomLegend />} />
-          </PieChart>
-        </ResponsiveContainer>
+      <div className="h-80 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-4xl mb-4">📊</div>
+          <p className="text-text-secondary">Gráfico de despesas e objetivos</p>
+          <div className="mt-4 space-y-2">
+            {chartData.slice(0, 3).map((item, index) => (
+              <div key={index} className="flex items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <div 
+                    className="w-3 h-3 rounded-full" 
+                    style={{ backgroundColor: item.color }}
+                  />
+                  <span className="text-text-secondary text-sm">{item.name}</span>
+                </div>
+                <span className="text-primary-orange font-semibold">R$ {item.value.toFixed(2)}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { goalCategories } from '../../data/goalCategories';
 import { motion } from 'framer-motion';
 import { Calendar, Target, TrendingUp, Plus, Check } from 'lucide-react';
 import { format } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
+import { ptBR } from 'date-fns/locale/pt-BR';
 import { GoalService } from '../../services/goalService';
 
 interface GoalCardProps {

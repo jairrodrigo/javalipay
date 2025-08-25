@@ -2,7 +2,7 @@ import React from 'react';
 import { Transaction } from '../../types/financial';
 import { categories } from '../../data/categories';
 import { format } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
+import { ptBR } from 'date-fns/locale/pt-BR';
 import { motion } from 'framer-motion';
 
 interface RecentTransactionsProps {
@@ -13,7 +13,7 @@ export const RecentTransactions: React.FC<RecentTransactionsProps> = ({ transact
   const recent = transactions.slice(0, 5);
 
   return (
-    <div className="theme-card p-6 rounded-xl shadow-lg border border-border-color transition-colors duration-300">
+    <div className="glass-card p-6 rounded-xl transition-colors duration-300">
       <h3 className="text-lg font-semibold text-text-primary mb-4">Transações Recentes</h3>
       
       <div className="space-y-4">

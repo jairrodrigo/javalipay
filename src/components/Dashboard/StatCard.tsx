@@ -17,7 +17,7 @@ export const StatCard: React.FC<StatCardProps> = ({ title, value, change, icon: 
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="theme-card p-6 rounded-xl shadow-lg border border-border-color transition-colors duration-300"
+      className="glass-card p-6 rounded-xl transition-colors duration-300"
     >
       <div className="flex items-center justify-between">
         <div>

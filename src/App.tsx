@@ -19,7 +19,7 @@ function App() {
   }, [theme]);
 
   return (
-    <Router>
+    <Router basename="/javalipay">
       <div className="flex h-screen bg-background transition-colors duration-300">
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         
